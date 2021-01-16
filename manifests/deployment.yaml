@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: pingpong
-          image: outisa/pingpong-application:latest
+          image: outisa/pingpong-application:efdf84bc499e16dba36a196bd6fbbefb6ac1fb25
