@@ -15,7 +15,7 @@ spec:
       volumes:
         - name: shared-pongs
           persistentVolumeClaim:
-            claimName: logs-claim
+            claimName: pongs-claim
       containers:
         - name: pingpong
           image: outisa/pingpong-application:5e236b9d524ed5a0fd3c13d13484978d6c936597
