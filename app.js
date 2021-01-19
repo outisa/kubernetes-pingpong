@@ -6,7 +6,7 @@ const path = require('path')
 const directory = path.join('/', 'app', 'pongs')
 const pathToFile = path.join(directory, 'pongs.txt')
 let counter = fs.readFileSync(pathToFile, 'utf-8')
-if (counter === '' || counter === 'undefined') {
+if (!counter) {
   counter = 0
 }
 app.get('/pingpong', (request, response) =>  {
