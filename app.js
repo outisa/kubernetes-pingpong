@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const fs = require('fs')
 
-const directory = path.join('/', 'app', 'files')
+const directory = path.join('/', 'app', 'pongs')
 const pathToFile = path.join(directory, 'pongs.txt')
 let counter = 0;
 fs.writeFile(pathToFile, `Ping / Pongs: ${counter}`, (err) => { 

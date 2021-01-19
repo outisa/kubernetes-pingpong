@@ -20,5 +20,5 @@ spec:
         - name: pingpong
           image: outisa/pingpong-application:efdf84bc499e16dba36a196bd6fbbefb6ac1fb25
           volumeMounts:
-            - mountPath: /app/files
+            - mountPath: /app/pongs
               name: shared-pongs
