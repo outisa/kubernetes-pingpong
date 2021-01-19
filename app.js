@@ -5,7 +5,7 @@ const path = require('path')
 
 const directory = path.join('/', 'app', 'pongs')
 const pathToFile = path.join(directory, 'pongs.txt')
-let counter = fs.readFileSync(pathTologs, 'utf-8')
+let counter = fs.readFileSync(pathToFile, 'utf-8')
 if (counter === '' || counter === 'undefined') {
   counter = 0
 }
