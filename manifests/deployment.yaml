@@ -18,7 +18,7 @@ spec:
             claimName: logs-claim
       containers:
         - name: pingpong
-          image: outisa/pingpong-application:5d7016a02a7fbdabcb538ca55d1f1ea69fdd61d9
+          image: outisa/pingpong-application:4aa348b4a6b3b75f40e5a04b15720e9493f6b064
           volumeMounts:
             - mountPath: /app/pongs
               name: shared-pongs
