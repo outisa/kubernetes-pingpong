@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: pongs-claim
 spec:
-  storageClassName: manual
+  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:
