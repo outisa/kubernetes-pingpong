@@ -12,6 +12,13 @@ spec:
       labels:
         app: pingpong
     spec:
+      volumes:
+        - name: shared-pongs
+          persistentVolumeClaim:
+            claimName: pongs-claim
       containers:
         - name: pingpong
           image: outisa/pingpong-application:efdf84bc499e16dba36a196bd6fbbefb6ac1fb25
+          volumeMounts:
+            - mountPath: /app/files
+              name: shared-pongs
