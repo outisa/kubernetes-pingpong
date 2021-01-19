@@ -12,7 +12,7 @@ if (counter === '' || counter === 'undefined') {
 app.get('/pingpong', (request, response) =>  {
   response.send(`pong ${counter}`)
   counter = counter + 1
-  fs.writeFile(pathToFile, `Ping / Pongs: ${counter}`, (err) => { 
+  fs.writeFile(pathToFile, `${counter}`, (err) => { 
     if (err) { 
       console.log(err); 
     }  
