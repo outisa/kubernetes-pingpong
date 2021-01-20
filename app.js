@@ -5,13 +5,15 @@ const path = require('path')
 
 const directory = path.join('/', 'app', 'pongs')
 const pathToFile = path.join(directory, 'pongs.txt')
-let counter = fs.readFileSync(pathToFile, 'utf-8')
-if (!counter) {
-  counter = 0
-} else {
-  counter = parseInt(counter)
-}
+
 app.get('/pingpong', (request, response) =>  {
+  let counter = 0
+  if (fs.existsSync(pathToFile) {
+    counter = fs.readFileSync(pathToFile, 'utf-8')
+    if (counter) {
+      counter = parseInt(counter)
+    }
+  }
   response.send(`pong ${counter}`)
   counter = counter + 1
   fs.writeFile(pathToFile, `${counter}`, (err) => { 
