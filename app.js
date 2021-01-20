@@ -8,7 +8,7 @@ const pathToFile = path.join(directory, 'pongs.txt')
 
 app.get('/pingpong', (request, response) =>  {
   let counter = 0
-  if (fs.existsSync(pathToFile) {
+  if (fs.existsSync(pathToFile)) {
     counter = fs.readFileSync(pathToFile, 'utf-8')
     if (counter) {
       counter = parseInt(counter)
