@@ -14,7 +14,7 @@ app.get('/pingpong', (request, response) =>  {
       counter = parseInt(counter)
     }
   }
-  response.send(`pong ${counter}`)
+  response.json({counts: counter})
   counter = counter + 1
   fs.writeFile(pathToFile, `${counter}`, (err) => { 
     if (err) { 
