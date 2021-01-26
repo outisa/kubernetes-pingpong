@@ -2,25 +2,27 @@ const express = require('express')
 const app = express()
 const fs = require('fs')
 const path = require('path')
-
+const {getPongs, insertIntoTable, createTable, updateTable} = require('./queries')
 const directory = path.join('/', 'app', 'pongs')
 const pathToFile = path.join(directory, 'pongs.txt')
 
+createTable()
+
 app.get('/pingpong', (request, response) =>  {
   let counter = 0
-  if (fs.existsSync(pathToFile)) {
-    counter = fs.readFileSync(pathToFile, 'utf-8')
-    if (counter) {
-      counter = parseInt(counter)
-    }
+  const rows = getPongs()
+  
+  if (rows) {
+    console.log(rows)
+    counter = rows[0].pongs
+  } else {
+    insertIntoTable(0)
   }
+
   response.json({counts: counter})
   counter = counter + 1
-  fs.writeFile(pathToFile, `${counter}`, (err) => { 
-    if (err) { 
-      console.log(err); 
-    }  
-  })
+  const id = rows[0].id
+  updateTable(counter, id)
 })
 
 module.exports = app
