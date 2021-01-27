@@ -18,11 +18,13 @@ app.get('/pingpong', (request, response) =>  {
 
   response.json({counts: counter})
   counter = counter + 1
+  console.log(counter)
   if (!rows) {
     rows = getPongs()
+    console.log(rows)
   }
   const id = rows[0].id
-  updateTable(counter, id)
+  updateTable(id, counter)
 })
 
 module.exports = app
