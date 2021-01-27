@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: pingpong
-        image: outisa/pingpong-application:af4fe52d8ef637adf25016e1ff91919a12e39770
+        image: outisa/pingpong-application:d9cfe5dfe9912555f556d260eb2ea8c195d8f292
         env:
           - name: POSTGRES_PASSWORD
             valueFrom:
