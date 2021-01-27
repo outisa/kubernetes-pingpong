@@ -10,7 +10,7 @@ app.get('/pingpong', (request, response) =>  {
   let rows = getPongs()
   
   if (rows) {
-    console.log(rows)
+    console.log('rows1',rows)
     counter = rows[0].pongs
   } else {
     insertIntoTable(counter)
@@ -21,12 +21,12 @@ app.get('/pingpong', (request, response) =>  {
   console.log(counter)
   
   if (rows) {
-    console.log(rows)
+    console.log('rows2',rows)
     const id = rows[0].id
     updateTable(id, counter)
   } else {
     rows = getPongs()
-    console.log(rows)
+    console.log('rows3', rows)
     const id = rows[0].id
     updateTable(id, counter)
   }

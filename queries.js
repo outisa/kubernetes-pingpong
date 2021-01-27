@@ -45,6 +45,8 @@ const getPongs = () => {
       console.log('error select all', error)
       throw error
     }
+    console.log(results)
+    console.log(results.rows)
     return results.rows
   })
 }
