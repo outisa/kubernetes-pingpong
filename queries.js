@@ -1,6 +1,7 @@
 const { Pool } = require('pg')
 const password = process.env.POSTGRES_PASSWORD
-const pool = new Pool(`postgres://postgres:${password}@postgres-svc.default:5432/postgres`)
+const connectionUrl = {connectionString: `postgres://postgres:${password}@postgres-svc.default:5432/postgres`}
+const pool = new Pool(connectionUrl)
 
 pool.on('connect', () => {
   console.log('connected to the db')
