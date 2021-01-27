@@ -3,7 +3,8 @@ const password = process.env.POSTGRES_PASSWORD
 console.log(password)
 const string = 'postgres://postgres:'+password+'@postgres-svc.mainapp-namespace:5432/postgres'
 console.log(string)
-const connectionUrl = {connectionString: 'postgres://postgres:example@postgres-svc.mainapp-namespace:5432/postgres' }
+const connectionUrl = {connectionString: string }
+console.log(connectionUrl)
 const pool = new Pool(connectionUrl)
 
 pool.on('connect', () => {
@@ -17,15 +18,13 @@ const createTable = () => {
         pongs INTEGER NOT NULL
       )`
 
-  pool.query(queryText)
-    .then((res) => {
-      console.log(res)
-      pool.end()
-    })
-    .catch((error) => {
+  pool.query(queryText, (error, result) => {
+    console.log(result)
+    if (error) {
       console.log('error create table', error)
-      pool.end()
-    })
+      throw error
+    }
+  })
 }
 
 const insertIntoTable = (pongs) => {
