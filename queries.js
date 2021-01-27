@@ -28,8 +28,7 @@ const createTable = async () => {
 }
 
 const insertIntoTable = async (pongs) => {
-  const queryText =
-  `INSERT INTO pingpongs (pongs) VALUES ($1)`
+  const queryText = `INSERT INTO pingpongs (pongs) VALUES ($1)`
   try {
     await pool.query(queryText, [pongs])
   } catch (error) {
