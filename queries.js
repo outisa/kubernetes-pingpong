@@ -1,5 +1,8 @@
 const { Pool } = require('pg')
 const password = process.env.POSTGRES_PASSWORD
+console.log(password)
+const string = 'postgres://postgres:'+password+'@postgres-svc.mainapp-namespace:5432/postgres'
+console.log(string)
 const connectionUrl = {connectionString: 'postgres://postgres:example@postgres-svc.mainapp-namespace:5432/postgres' }
 const pool = new Pool(connectionUrl)
 
@@ -19,8 +22,8 @@ const createTable = () => {
       console.log(res)
       pool.end()
     })
-    .catch((err) => {
-      console.log(err)
+    .catch((error) => {
+      console.log('error create table', error)
       pool.end()
     })
 }
@@ -29,15 +32,18 @@ const insertIntoTable = (pongs) => {
   const queryText =
   `INSERT INTO pingpongs (pongs) VALUES ($1)`
 
-pool.query(queryText, [pongs], (error, results) => {
-  if (error) {
-    throw error
-  }})
+  pool.query(queryText, [pongs], (error, results) => {
+    if (error) {
+      console.log('error insert into table', error)
+      throw error
+    }
+  })
 }
 const getPongs = () => {
   const queryText = 'SELECT * FROM pingpongs'
   pool.query(queryText, (error, results) => {
     if (error) {
+      console.log('error select all', error)
       throw error
     }
     return results.rows
@@ -47,6 +53,7 @@ const updateTable = (id, pongs) => {
   const queryText = `UPDATE pingpongs SET pongs = $1 WHERE id = $2`
   pool.query(queryText, [pongs, id], (error, results) => {
     if (error) {
+      console.log('update row', error)
       throw error
     }
   })
