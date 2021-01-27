@@ -15,21 +15,11 @@ app.get('/pingpong', async (request, response) =>  {
   } else {
     await insertIntoTable(counter)
   }
-
   response.json({counts: counter})
   counter = counter + 1
-  console.log(counter)
   
-  if (rows) {
-    console.log('rows2',rows)
-    const id = rows[0].id
-    await updateTable(id, counter)
-  } else {
-    rows = await getPongs()
-    console.log('rows3', rows)
-    const id = rows[0].id
-    await updateTable(id, counter)
-  }
+  const id = 1
+  await updateTable(id, counter)
 })
 
 module.exports = app

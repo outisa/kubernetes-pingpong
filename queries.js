@@ -1,10 +1,7 @@
 const { Pool } = require('pg')
 const password = process.env.POSTGRES_PASSWORD
-console.log(password)
 const string = 'postgres://postgres:'+password+'@postgres-svc.mainapp-namespace:5432/postgres'
-console.log(string)
 const connectionUrl = {connectionString: string }
-console.log(connectionUrl)
 const pool = new Pool(connectionUrl)
 
 pool.on('connect', () => {
@@ -40,8 +37,6 @@ const getPongs = async () => {
   const queryText = 'SELECT * FROM pingpongs'
   try {
     const results = await pool.query(queryText)
-    console.log(results)
-    console.log(results.rows)
     return results.rows
   } catch (error) {
     console.log(error)
