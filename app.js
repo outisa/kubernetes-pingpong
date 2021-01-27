@@ -11,7 +11,7 @@ app.get('/pingpong', async (request, response) =>  {
   
   if (row) {
     console.log('rows1',row)
-    counter = row.pongs
+    counter = row[0].pongs
     console.log(counter)
   } else {
     await insertIntoTable(counter)
