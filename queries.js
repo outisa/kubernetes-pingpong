@@ -10,7 +10,7 @@ const pool = new Pool(connectionUrl)
 pool.on('connect', () => {
   console.log('connected to the db')
 })
-const createTable = () => {
+const createTable = async () => {
   const queryText =
     `CREATE TABLE IF NOT EXISTS
       pingpongs(

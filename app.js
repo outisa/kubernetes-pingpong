@@ -16,11 +16,14 @@ app.get('/pingpong', (request, response) =>  {
     console.log(rows)
     counter = rows[0].pongs
   } else {
-    insertIntoTable(0)
+    insertIntoTable(counter)
   }
 
   response.json({counts: counter})
   counter = counter + 1
+  if (!rows) {
+    rows = getPongs()
+  }
   const id = rows[0].id
   updateTable(counter, id)
 })
