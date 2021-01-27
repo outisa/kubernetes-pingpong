@@ -41,12 +41,11 @@ const getPongs = async () => {
   const queryText = 'SELECT * FROM pingpongs'
   try {
     const results = await pool.query(queryText)
-      console.log(results)
-      console.log(results.rows)
-      return results.rows
-    } catch (error) {
-      console.log(error)
-    }
+    console.log(results)
+    console.log(results.rows)
+    return results.rows
+  } catch (error) {
+    console.log(error)
   }
 }
 const updateTable = async (id, pongs) => {
