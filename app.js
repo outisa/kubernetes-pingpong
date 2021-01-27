@@ -1,10 +1,7 @@
 const express = require('express')
 const app = express()
-const fs = require('fs')
-const path = require('path')
+
 const {getPongs, insertIntoTable, createTable, updateTable} = require('./queries')
-const directory = path.join('/', 'app', 'pongs')
-const pathToFile = path.join(directory, 'pongs.txt')
 
 createTable()
 
