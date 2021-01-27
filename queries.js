@@ -27,37 +27,35 @@ const createTable = async () => {
   })
 }
 
-const insertIntoTable = (pongs) => {
+const insertIntoTable = async (pongs) => {
   const queryText =
   `INSERT INTO pingpongs (pongs) VALUES ($1)`
+  try {
+    await pool.query(queryText, [pongs])
+  } catch (error) {
+    console.log('error insert into table', error)
+  }
+}
 
-  pool.query(queryText, [pongs], (error, results) => {
-    if (error) {
-      console.log('error insert into table', error)
-      throw error
-    }
-  })
-}
-const getPongs = () => {
+const getPongs = async () => {
   const queryText = 'SELECT * FROM pingpongs'
-  pool.query(queryText, (error, results) => {
-    if (error) {
-      console.log('error select all', error)
-      throw error
+  try {
+    const results = await pool.query(queryText)
+      console.log(results)
+      console.log(results.rows)
+      return results.rows
+    } catch (error) {
+      console.log(error)
     }
-    console.log(results)
-    console.log(results.rows)
-    return results.rows
-  })
+  }
 }
-const updateTable = (id, pongs) => {
+const updateTable = async (id, pongs) => {
   const queryText = `UPDATE pingpongs SET pongs = $1 WHERE id = $2`
-  pool.query(queryText, [pongs, id], (error, results) => {
-    if (error) {
-      console.log('update row', error)
-      throw error
-    }
-  })
+  try {
+    await pool.query(queryText, [pongs, id])
+  } catch (error) {
+    console.log('update row', error)
+  }
 }
 module.exports = {
   createTable,
