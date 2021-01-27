@@ -7,11 +7,12 @@ createTable()
 
 app.get('/pingpong', async (request, response) =>  {
   let counter = 0
-  let rows = await getPongs()
+  let row = await getPongs()
   
   if (rows) {
     console.log('rows1',rows)
-    counter = rows[0].pongs
+    counter = row.getPongs
+    console.log(counter)
   } else {
     await insertIntoTable(counter)
   }

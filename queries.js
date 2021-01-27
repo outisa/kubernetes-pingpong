@@ -34,7 +34,7 @@ const insertIntoTable = async (pongs) => {
 }
 
 const getPongs = async () => {
-  const queryText = 'SELECT * FROM pingpongs'
+  const queryText = 'SELECT * FROM pingpongs WHERE id = 1'
   try {
     const results = await pool.query(queryText)
     return results.rows
