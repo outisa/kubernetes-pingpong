@@ -11,7 +11,7 @@ const createTable = () => {
     `CREATE TABLE IF NOT EXISTS
       pingpongs(
         id UUID PRIMARY KEY,
-        pongs INTEGER NOT NULL,
+        pongs INTEGER NOT NULL
       )`
 
   pool.query(queryText)
