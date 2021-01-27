@@ -14,7 +14,7 @@ const createTable = async () => {
   const queryText =
     `CREATE TABLE IF NOT EXISTS
       pingpongs(
-        id UUID PRIMARY KEY,
+        id SERIAL PRIMARY KEY,
         pongs INTEGER NOT NULL
       )`
 
