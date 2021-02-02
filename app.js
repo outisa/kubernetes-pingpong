@@ -9,8 +9,8 @@ app.get('/pingpong', async (request, response) =>  {
   let counter = 0
   let row = await getPongs()
   
-  if (row) {
-    console.log('rows1',row)
+  if (row[0]) {
+    console.log('rows1',row[0])
     counter = row[0].pongs
     console.log(counter)
   } else {
