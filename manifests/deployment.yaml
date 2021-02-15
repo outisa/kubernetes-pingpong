@@ -14,17 +14,13 @@ spec:
     spec:
       containers:
       - name: pingpong
-        image: outisa/pingpong-application:8b77cd9ac2c47f4e0c79b331a6ddccc181f2491b
+        image: outisa/pingpong-application:f2fad599ad3406034a651c69853a5d2bd952caa9
         readinessProbe:
           initialDelaySeconds: 10
           periodSeconds: 5
           httpGet:
             path: /pingpong/healthz
             port: 3002
-        resources:
-          limits:
-            cpu: "150m"
-            memory: "50Mi"
         env:
           - name: POSTGRES_PASSWORD
             valueFrom:

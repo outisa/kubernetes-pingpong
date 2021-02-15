@@ -23,8 +23,8 @@ app.get('/pingpong', async (request, response) =>  {
   await updateTable(id, counter)
 })
 
-app.get('/pingpong/healthz', async (req, res) => {
-  checkConnection()
+app.get('/pingpong/healthz', async (request, response) => {
+  checkConnection(request, response)
 })
 
 module.exports = app

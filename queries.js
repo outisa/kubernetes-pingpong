@@ -24,14 +24,14 @@ const createTable = async () => {
   })
 }
 
-const checkConnection = () => {
+const checkConnection = (request, response) => {
   pool.query('SELECT NOW()', (err, res) => {
     console.log('res', res)
     if (err) {
       console.log('err', err)
-      return res.status(500).end()
+      return response.status(500).end()
     } else {
-      return res.status(200).end()
+      return response.status(200).end()
     }
 
   }) 
