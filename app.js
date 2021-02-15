@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-const {getPongs, insertIntoTable, createTable, updateTable} = require('./queries')
+const {getPongs, insertIntoTable, createTable, updateTable, checkConnection} = require('./queries')
 
 createTable()
 
@@ -21,6 +21,10 @@ app.get('/pingpong', async (request, response) =>  {
   
   const id = 1
   await updateTable(id, counter)
+})
+
+app.get('/pingpong/healthz', async (req, res) => {
+  checkConnection()
 })
 
 module.exports = app

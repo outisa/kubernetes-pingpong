@@ -1,4 +1,5 @@
 const { Pool } = require('pg')
+const { response } = require('./app')
 const password = process.env.POSTGRES_PASSWORD
 const string = 'postgres://postgres:'+password+'@postgres-svc.default:5432/postgres'
 const connectionUrl = {connectionString: string }
@@ -24,6 +25,18 @@ const createTable = async () => {
   })
 }
 
+const checkConnection = () => {
+  pool.query('SELECT NOW()', (err, res) => {
+    console.log('res', res)
+    if (err) {
+      console.log('err', err)
+      response.sendStatus(500).end()
+    } else {
+      response.sendStatus(200).end()
+    }
+
+  }) 
+}
 const insertIntoTable = async (pongs) => {
   const queryText = `INSERT INTO pingpongs (pongs) VALUES ($1)`
   try {
@@ -54,5 +67,6 @@ module.exports = {
   createTable,
   insertIntoTable,
   getPongs,
-  updateTable
+  updateTable,
+  checkConnection
 }

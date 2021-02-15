@@ -2,8 +2,6 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: pingpong-ing
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /pingpong
 spec:
   rules:
   - http:
@@ -11,4 +9,4 @@ spec:
       - path: /pingpong
         backend:
           serviceName: pingpong-backend-svc
-          servicePort: 80
+          servicePort: 2345
