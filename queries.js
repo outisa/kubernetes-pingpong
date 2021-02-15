@@ -30,9 +30,9 @@ const checkConnection = () => {
     console.log('res', res)
     if (err) {
       console.log('err', err)
-      response.sendStatus(500).end()
+      res.sendStatus(500).end()
     } else {
-      response.sendStatus(200).end()
+      res.sendStatus(200).end()
     }
 
   }) 

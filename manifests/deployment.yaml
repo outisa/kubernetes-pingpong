@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: pingpong
-        image: outisa/pingpong-application:3e0013bf27fb38003800de57d56ec2067116fad8
+        image: outisa/pingpong-application:75f0ea576895c304de0203b70ec1f905acbf3408
         readinessProbe:
           initialDelaySeconds: 10
           periodSeconds: 5
