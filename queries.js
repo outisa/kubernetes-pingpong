@@ -1,5 +1,4 @@
 const { Pool } = require('pg')
-const { response } = require('./app')
 const password = process.env.POSTGRES_PASSWORD
 const string = 'postgres://postgres:'+password+'@postgres-svc.default:5432/postgres'
 const connectionUrl = {connectionString: string }
@@ -30,9 +29,9 @@ const checkConnection = () => {
     console.log('res', res)
     if (err) {
       console.log('err', err)
-      res.sendStatus(500).end()
+      return res.status(500).end()
     } else {
-      res.sendStatus(200).end()
+      return res.status(200).end()
     }
 
   }) 
