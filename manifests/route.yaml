@@ -1,0 +1,8 @@
+apiVersion: serving.knative.dev/v1
+kind: Route
+metadata:
+  name: todo-app-route
+spec:
+  traffic:
+    - revisionName: pingpong-app-v1
+      percent: 100
