@@ -1,0 +1,17 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: pingpong-app
+spec:
+  template:
+    metadata:
+      name: pingpong-app-v1
+    spec:
+      containers:
+        - image: outisa/pingpong-application:fbd9f817abb27fe950e033bd83dca41028f31e1f
+          env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-credentials
+                key: POSTGRES_PASSWORD
